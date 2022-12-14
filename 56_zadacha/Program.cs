@@ -15,7 +15,9 @@ if (rows == columns)
 int[,] array = GetArray(rows, columns, 0, 10);
 PrintArray(array);
 WriteLine();
-WriteLine($"Строка с максимальной суммой элементов - это строка №{MaxSummaRows(array)}");
+//WriteLine($"Суммы элементов по строкам двумерного массива: [{String.Join(",", SummaRows(array))}]");
+int[] array2 = SummaRows(array);
+WriteLine($"Строка с наименьшей суммой элементов - это строка №{MinSummaRows(array2)}");
 
 int[,] GetArray(int m, int n, int min, int max)
 {
@@ -42,10 +44,9 @@ void PrintArray(int[,] array)
     }
 }
 
-int MaxSummaRows(int[,] array)
+int[] SummaRows(int[,] array)
 { 
-     int maxsum = 0;
-     int number = 0;
+     int[] sumArray = new int[array.GetLength(0)];
      for (int i = 0; i < array.GetLength(0); i++)
     {
         int sum = 0;
@@ -53,9 +54,20 @@ int MaxSummaRows(int[,] array)
         {
             sum = sum + array[i,j];
         }
-        if (sum > maxsum) 
+        sumArray[i] = sum;
+    }
+    return sumArray;
+}
+
+int MinSummaRows(int[] array)
+{
+    int minsum = array[0];
+    int number = 0;
+    for (int i = 0; i < array.Length; i++)
+    {
+        if (array[i] < minsum)
         {
-            maxsum = sum;
+            minsum = array[i];
             number = i+1;
         }
     }
