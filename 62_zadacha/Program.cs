@@ -36,7 +36,14 @@ void PrintArray(int[,] array)
     {
         for (int j = 0; j < array.GetLength(1); j++)
         {
-            Write($"{array[i, j]} ");
+            if (array[i,j] / 10 <= 0)
+            {
+                Write($"0{array[i, j]} ");
+            }
+            else
+            {
+                Write($"{array[i, j]} ");
+            }
         }
         WriteLine();
     }
