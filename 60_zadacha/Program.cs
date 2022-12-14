@@ -10,22 +10,21 @@ int y = int.Parse(elements[1]);
 int z = int.Parse(elements[2]);
 int[,,] array = GetArray(x, y, z, 10, 99);
 PrintArray(array);
-WriteLine();
 
 
-int[,,] GetArray(int a, int b, int c, int min, int max)
+int[,,] GetArray(int x, int y, int z, int min, int max)
 {
-    int[,,] result = new int[a, b, c];
-    for (int i = 0; i < a; i++)
+    int[,,] result = new int[x, y, z];
+    for (int i = 0; i < x; i++)
     {
-        for (int j = 0; j < b; j++)
+        for (int j = 0; j < y; j++)
         {
-            for (int k = 0; k < c; k++)
+            for (int k = 0; k < z; k++)
             {
                 result[i, j, k] = new Random().Next(min, max + 1);
             }
+             
         }
-        //WriteLine();
     }
     return result;
 }
